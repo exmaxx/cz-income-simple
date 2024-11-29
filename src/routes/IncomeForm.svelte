@@ -14,6 +14,8 @@
 
 <h1 class="text-center">Měsíční příjem</h1>
 
+<h2 class="text-center">Čistý příjem</h2>
+
 <form method="POST" onsubmit={handleSubmit} class="m-4 flex flex-col items-center">
 	<label class="input input-bordered flex items-center gap-2">
 		<input type="number" class="grow" placeholder="Jaký chci čistý příjem" bind:value={incomeMonthly} />
