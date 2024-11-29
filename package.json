@@ -39,6 +39,6 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
-		"@exmaxx/cz-income-lib": "^0.3.0"
+		"@exmaxx/cz-income-lib": "git+https://exmaxx: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@github.com/exmaxx/cz-income-simple.git"
 	}
 }

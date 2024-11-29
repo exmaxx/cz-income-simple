@@ -313,6 +313,12 @@
   resolved "https://npm.pkg.github.com/download/@exmaxx/cz-income-lib/0.3.0/c81a706b5d21549e898672cd5660890ee9999091#c81a706b5d21549e898672cd5660890ee9999091"
   integrity sha512-lIrK31gOcuusAa+l2JiBOPwm+hA0T8rjKi4w+J9x/9q0EPPmbpkN/QQzkB3Tw4UepjlkCYHEJtQu/zTDkiggeg==
 
+"@exmaxx/cz-income-lib@git+https://exmaxx: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@github.com/exmaxx/cz-income-simple.git":
+  version "0.0.1"
+  resolved "git+https://exmaxx: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@github.com/exmaxx/cz-income-simple.git#6632780cb1b8dcb56fba8f8acf7683984845feb8"
+  dependencies:
+    "@exmaxx/cz-income-lib" "^0.3.0"
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"
