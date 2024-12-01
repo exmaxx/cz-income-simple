@@ -1,6 +1,7 @@
 {
 	"name": "cz-income-simple",
-	"version": "0.0.1",
+	"description": "A simple calculator for gross and net income in Czech Republic, and a comparison between a freelancer and an employee.",
+	"version": "0.0.2",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
@@ -39,6 +40,6 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
-		"@exmaxx/cz-income-lib": "git+https://exmaxx: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@github.com/exmaxx/cz-income-simple.git"
+		"@exmaxx/cz-income-lib": "^0.3.2"
 	}
 }
