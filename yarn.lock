@@ -308,10 +308,10 @@
   dependencies:
     levn "^0.4.1"
 
-"@exmaxx/cz-income-lib@^0.3.2":
-  version "0.3.2"
-  resolved "https://npm.pkg.github.com/download/@exmaxx/cz-income-lib/0.3.2/1efef61716b883dda5ef9869f81aa5334d9e152d#1efef61716b883dda5ef9869f81aa5334d9e152d"
-  integrity sha512-5fHiwo9L/jKbi8fqH7A2gvOhLnKlqTQKl8KsVV5zAdaQ7h3bf5CN8aBUDxtK7RFWn1/BvkbEemEKcICrdVv5Zg==
+"@exmaxx/cz-income-lib@^0.3.3":
+  version "0.3.3"
+  resolved "https://npm.pkg.github.com/download/@exmaxx/cz-income-lib/0.3.3/d6287b28e1a46f3002cab1823822506f158279e5#d6287b28e1a46f3002cab1823822506f158279e5"
+  integrity sha512-IqC48r98YCuaJ/4YKkEZFjF1arB1qlmX6qiDPxtkUJYUq5T4EKyBp79BKZ8qy0KqtMNI9IJSckLItBjIWfPL4A==
 
 "@humanfs/core@^0.19.1":
   version "0.19.1"

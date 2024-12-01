@@ -1,6 +1,6 @@
 import { calculateEmployeeGrossSalary, calculateFreelancerGrossIncome } from '@exmaxx/cz-income-lib'
-import type { Rates as EmployeeRates } from '@exmaxx/cz-income-lib/dist/lib/esm/employee/types'
-import type { Rates as FreelancerRates } from '@exmaxx/cz-income-lib/dist/lib/esm/freelancer/types'
+import type { EmployeeRates } from '@exmaxx/cz-income-lib'
+import type { FreelancerRates } from '@exmaxx/cz-income-lib'
 
 // For 2024
 const MIN_SALARY_MONTHLY = 18900 // per month
