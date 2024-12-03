@@ -4,13 +4,21 @@
 
 	let { freelancer, employee }: Result = $props()
 
-	let freelancerGrossFormatted = $derived(formatCurrency(Math.trunc(freelancer.gross / 12)))
-	let employeeGrossFormatted = $derived(formatCurrency(Math.trunc(employee.gross / 12)))
+	const freelancerGrossFormatted = $derived(formatCurrency(Math.trunc(freelancer.gross / 12)))
+	const employeeGrossFormatted = $derived(formatCurrency(Math.trunc(employee.gross / 12)))
 
 	const hoursPerYear = 52 * 40
 
 	let freelancerGrossHourlyFormatted = $derived(
 		formatCurrency(Math.trunc(freelancer.gross / hoursPerYear))
+	)
+
+	const employerCostsFormatted = $derived(
+		formatCurrency(
+			Math.trunc(
+				(employee.contributions.social.employer + employee.contributions.health.employer) / 12
+			)
+		)
 	)
 
 	/**
@@ -45,6 +53,9 @@
 			<div class="stat-title">Zaměstnanec</div>
 			<div class="stat-value">{employeeGrossFormatted}</div>
 			<div class="stat-desc">měsíčně</div>
+			<div class="stat-actions">
+				<span class="badge">+ zaměstnavatel dá {employerCostsFormatted} na pojistném</span>
+			</div>
 		</div>
 	</div>
 </div>
