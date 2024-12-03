@@ -3,8 +3,8 @@
 
 	let { freelancer, employee }: Result = $props()
 
-	let freelancerFormatted = $derived(formatCurrency(Math.trunc(freelancer / 12)))
-	let employeeFormatted = $derived(formatCurrency(Math.trunc(employee / 12)))
+	let freelancerGrossFormatted = $derived(formatCurrency(Math.trunc(freelancer.gross / 12)))
+	let employeeGrossFormatted = $derived(formatCurrency(Math.trunc(employee.gross / 12)))
 
 	/**
 	 * Format a number as a CZK currency. E.g. `12345` -> `12 345 Kč`.
@@ -25,7 +25,7 @@
 	<div class="stats bg-secondary text-secondary-content shadow">
 		<div class="stat">
 			<div class="stat-title">OSVČ</div>
-			<div class="stat-value">{freelancerFormatted}</div>
+			<div class="stat-value">{freelancerGrossFormatted}</div>
 			<div class="stat-desc">měsíčně</div>
 <!--			TODO: Add hourly rate. -->
 <!--			<div class="stat-actions">-->
@@ -34,10 +34,10 @@
 		</div>
 	</div>
 
-	<div class="stats bg-accent text-accent-content shadow mt-4">
+	<div class="stats mt-4 bg-accent text-accent-content shadow">
 		<div class="stat">
 			<div class="stat-title">Zaměstnanec</div>
-			<div class="stat-value">{employeeFormatted}</div>
+			<div class="stat-value">{employeeGrossFormatted}</div>
 			<div class="stat-desc">měsíčně</div>
 		</div>
 	</div>

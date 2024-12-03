@@ -1,6 +1,6 @@
 export const appState = $state({
 	income: {
-		freelancer: 0,
-		employee: 0,
+		freelancer: null, // Add type.
+		employee: null// Add type.
 	},
 })
