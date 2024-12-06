@@ -11,6 +11,7 @@ export default {
 	plugins: [daisyui],
 
 	daisyui: {
-		themes: ['cupcake'],
+		themes: ['cupcake', 'sunset'],
+		darkTheme: 'sunset',
 	},
 } satisfies Config
