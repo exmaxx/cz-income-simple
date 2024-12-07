@@ -7,14 +7,29 @@
 	let { children } = $props()
 </script>
 
-<div class="gradient min-h-screen">
-	{@render children()}
+<div class="gradient">
+	<div class="mx-auto min-h-screen md:max-w-2xl">
+		{@render children()}
+	</div>
 </div>
 
 <style>
 	.gradient {
-		background-image: radial-gradient(at left top, oklch(var(--p) / 0.15) 0, transparent 70%);
-		background-size: 100% 30rem;
+		--left: 0%;
+		--top: 0%;
+		background-image: radial-gradient(
+			at var(--left) var(--top),
+			oklch(var(--p) / 0.15) 0,
+			transparent 70%
+		);
+		background-size: 80% 30rem;
 		background-repeat: no-repeat;
+	}
+
+	@media (min-width: 768px) {
+		.gradient {
+			--left: 30%;
+			--top: 20%;
+		}
 	}
 </style>

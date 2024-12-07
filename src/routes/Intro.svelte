@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center">
 	<h1
-		class=" text-4xl font-semibold mx-2 my-1 bg-gradient-to-br from-accent via-secondary to-primary bg-clip-text
+		class="text-4xl md:text-5xl font-semibold mx-2 my-1 bg-gradient-to-br from-accent via-secondary to-primary bg-clip-text
 		text-center uppercase tracking-wide text-transparent dark:bg-gradient-to-br"
 	>
 		Kalkulátor vašeho příjmu
