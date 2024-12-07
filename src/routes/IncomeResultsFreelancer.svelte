@@ -1,17 +1,15 @@
 <script lang="ts">
 	import type { CalculationResultsFreelancer } from '$lib/types'
 	import { formatCurrency } from '$lib/formatters'
+	import { BANK_HOLIDAYS, DAYS_PER_YEAR, HOURS_PER_DAY, VACATION_DAYS } from '$lib/constants'
 
 	let { results }: { results: CalculationResultsFreelancer } = $props()
 
 	const freelancerGrossFormatted = $derived(formatCurrency(results.gross / 12))
 
-	const bankHolidays = 10
-	const vacationDays = 25
-	const daysPerYear = 52 * 5
-	const hoursPerYear = (daysPerYear - bankHolidays - vacationDays) * 8
+	const workingHoursPerYear = (DAYS_PER_YEAR - BANK_HOLIDAYS - VACATION_DAYS) * HOURS_PER_DAY
 
-	let freelancerGrossHourlyFormatted = $derived(formatCurrency(results.gross / hoursPerYear))
+	let freelancerGrossHourlyFormatted = $derived(formatCurrency(results.gross / workingHoursPerYear))
 </script>
 
 <div class="flex w-min flex-col items-center">
@@ -27,7 +25,8 @@
 	</div>
 
 	<p class="mt-1 flex w-full text-wrap text-xs">
-		<span class="mx-1">*</span> Hodinová sazba počítá s volnem během svátků ({bankHolidays} dnů) a s
-		dovolenou ({vacationDays} dnů).
+		<span class="mx-1">*</span>
+		Hodinová sazba počítá s volnem během svátků ({BANK_HOLIDAYS} dnů) a s dovolenou ({VACATION_DAYS}
+		dnů).
 	</p>
 </div>
