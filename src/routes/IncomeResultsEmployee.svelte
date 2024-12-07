@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { CalculationResults } from '$lib/types'
+	import type { CalculationResultsEmployee } from '$lib/types'
 	import { formatCurrency } from '$lib/formatters'
 
-	let { results }: { results: CalculationResults } = $props()
+	let { results }: { results: CalculationResultsEmployee } = $props()
 
-	const employeeGrossFormatted = $derived(formatCurrency(Math.trunc(results.gross / 12)))
+	const employeeGrossFormatted = $derived(formatCurrency(results.gross / 12))
 </script>
 
 <div class="stats mt-4 bg-accent text-accent-content shadow">
