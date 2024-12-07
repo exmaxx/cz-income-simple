@@ -7,6 +7,10 @@
 	let { children } = $props()
 </script>
 
+<svelte:head>
+	<title>Kalkulačka příjmu | Srovnání OSVČ a zaměstnance</title>
+</svelte:head>
+
 <div class="gradient">
 	<div class="mx-auto min-h-screen md:max-w-2xl">
 		{@render children()}
