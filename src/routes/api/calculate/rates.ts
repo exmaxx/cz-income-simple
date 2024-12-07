@@ -1,11 +1,7 @@
-import { calculateEmployeeGrossSalary, calculateFreelancerGrossIncome } from '@exmaxx/cz-income-lib'
-import type { EmployeeRates } from '@exmaxx/cz-income-lib'
-import type { FreelancerRates } from '@exmaxx/cz-income-lib'
+import { AVG_SALARY_MONTHLY, MIN_SALARY_MONTHLY } from '$lib/constants'
+import type { EmployeeRates, FreelancerRates } from '@exmaxx/cz-income-lib'
 
 // For 2024
-const MIN_SALARY_MONTHLY = 18900 // per month
-const AVG_SALARY_MONTHLY = 43967 // per month
-
 const commonIncomeRates = {
 	credit: 30840,
 	highRate: 0.23, // 23%
@@ -13,7 +9,8 @@ const commonIncomeRates = {
 	rate: 0.15, // 15%
 }
 
-const employeeRates: EmployeeRates = {
+// For 2024
+export const employeeRates: EmployeeRates = {
 	healthRates: {
 		employeeRate: 0.045, // 4.5%
 		employerRate: 0.09, // 9%
@@ -32,7 +29,8 @@ const employeeRates: EmployeeRates = {
 	},
 }
 
-const freelancerRates: FreelancerRates = {
+// For 2024
+export const freelancerRates: FreelancerRates = {
 	incomeRates: {
 		...commonIncomeRates,
 		nonTaxable: 0,
@@ -50,30 +48,4 @@ const freelancerRates: FreelancerRates = {
 		minBase: AVG_SALARY_MONTHLY * 0.25 * 12, // 25% of average salary per month
 		rate: 0.292, // 29.2% = 28% (retirement) + 1.2% (unemployment)
 	},
-}
-
-export function calcGrossIncome(monthlyIncome: number) {
-	if (!monthlyIncome) {
-		throw new Error('Monthly income is required')
-	}
-
-	// TODO: Actually, check minimum wage?
-	if (monthlyIncome <= 0) {
-		throw new Error('Monthly income must be greater than 0')
-	}
-
-	const yearlyIncome = monthlyIncome * 12
-
-	const freelancer = calculateFreelancerGrossIncome(
-		yearlyIncome,
-		{ percentage: 0.6 },
-		freelancerRates
-	)
-
-	const employee = calculateEmployeeGrossSalary(yearlyIncome, employeeRates)
-
-	return {
-		freelancer,
-		employee,
-	}
 }

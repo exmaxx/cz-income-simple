@@ -1,6 +1,8 @@
+import type { CalculationResults } from '$lib/types'
+
 export const appState = $state({
 	income: {
-		freelancer: 0,
-		employee: 0,
+		freelancer: null as unknown as CalculationResults, // FIXME: Heavily temporary.
+		employee: null  as unknown as CalculationResults // FIXME: Heavily temporary.
 	},
 })

@@ -1,6 +1,6 @@
 import type { CalculationResults } from '$lib/types'
 
-export interface Result {
+export interface CalculationCombinedResults {
 	freelancer: CalculationResults
 	employee: CalculationResults
 }
