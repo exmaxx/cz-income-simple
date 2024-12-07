@@ -3,7 +3,7 @@
 
 	let monthlyNetIncome: number | null = $state(null)
 
-	let myInput: HTMLInputElement
+	let incomeInput: HTMLInputElement
 
 	async function handleSubmit(event: Event) {
 		event.preventDefault()
@@ -16,7 +16,7 @@
 	async function handleError(event: Event) {
 		event.preventDefault()
 
-		myInput.focus()
+		incomeInput.focus()
 	}
 </script>
 
@@ -36,7 +36,7 @@
 				class="grow"
 				placeholder="Jaký chci čistý příjem"
 				min="16442"
-				bind:this={myInput}
+				bind:this={incomeInput}
 				bind:value={monthlyNetIncome}
 			/>
 			Kč
