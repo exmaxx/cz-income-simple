@@ -9,6 +9,6 @@
 	<h2 class="order-first mb-2 mt-10 text-base">Pro zaměstnance i OSVČ</h2>
 
 	<p class="m-10 text-center">
-		Zjistěte jednoduše, jaký <strong class="font-black">hrubý příjem</strong> potřebujete, abyste si splnili své <strong>představy o čistém výdělku</strong>.
+		Zjistěte, jaký <strong class="font-black">hrubý příjem</strong> potřebujete, abyste si splnili své <strong>představy o čistém výdělku</strong>.
 	</p>
 </div>
