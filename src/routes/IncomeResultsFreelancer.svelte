@@ -19,9 +19,9 @@
 <div class="flex w-min flex-col items-center">
 	<div class="stats bg-secondary text-secondary-content shadow">
 		<div class="stat">
-			<div class="stat-title">OSVČ</div>
+			<div class="stat-title dark:text-neutral">OSVČ</div>
 			<div class="stat-value">{freelancerGrossFormatted}</div>
-			<div class="stat-desc">měsíčně</div>
+			<div class="stat-desc dark:text-neutral">měsíčně</div>
 			<div class="stat-actions">
 				<span class="badge">{freelancerGrossHourlyFormatted} / hodina *</span>
 			</div>
