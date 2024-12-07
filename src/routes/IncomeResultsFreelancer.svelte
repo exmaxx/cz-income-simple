@@ -1,19 +1,17 @@
 <script lang="ts">
-	import type { CalculationResults } from '$lib/types'
+	import type { CalculationResultsFreelancer } from '$lib/types'
 	import { formatCurrency } from '$lib/formatters'
 
-	let { results }: { results: CalculationResults } = $props()
+	let { results }: { results: CalculationResultsFreelancer } = $props()
 
-	const freelancerGrossFormatted = $derived(formatCurrency(Math.trunc(results.gross / 12)))
+	const freelancerGrossFormatted = $derived(formatCurrency(results.gross / 12))
 
 	const bankHolidays = 10
 	const vacationDays = 25
 	const daysPerYear = 52 * 5
 	const hoursPerYear = (daysPerYear - bankHolidays - vacationDays) * 8
 
-	let freelancerGrossHourlyFormatted = $derived(
-		formatCurrency(Math.trunc(results.gross / hoursPerYear))
-	)
+	let freelancerGrossHourlyFormatted = $derived(formatCurrency(results.gross / hoursPerYear))
 </script>
 
 <div class="flex w-min flex-col items-center">

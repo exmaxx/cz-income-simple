@@ -3,6 +3,8 @@
 	import { fly } from 'svelte/transition'
 	import IncomeResultsFreelancer from './IncomeResultsFreelancer.svelte'
 	import IncomeResultsEmployee from './IncomeResultsEmployee.svelte'
+	import IncomeResultsClient from './IncomeResultsClient.svelte'
+	import IncomeResultsEmployer from './IncomeResultsEmployer.svelte'
 
 	let { freelancer, employee }: Result = $props()
 </script>
@@ -12,4 +14,9 @@
 
 	<IncomeResultsFreelancer results={freelancer} />
 	<IncomeResultsEmployee results={employee} />
+
+	<h2>Klient(i) / zaměstnavatelé zaplatí</h2>
+
+	<IncomeResultsClient results={freelancer} />
+	<IncomeResultsEmployer results={employee} />
 </div>
