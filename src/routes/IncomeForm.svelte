@@ -25,7 +25,7 @@
 <form
 	method="POST"
 	onsubmit={monthlyNetIncome ? handleSubmit : handleError}
-	class="m-4 flex flex-col items-center"
+	class="mx-4 flex flex-col items-center"
 >
 	<div>
 		<div class="m-1 justify-self-start">Požadovaný čistý měsíční příjem:</div>

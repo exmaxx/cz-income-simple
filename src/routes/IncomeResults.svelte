@@ -15,7 +15,7 @@
 	<IncomeResultsFreelancer results={freelancer} />
 	<IncomeResultsEmployee results={employee} />
 
-	<h2>Klient(i) / zaměstnavatelé zaplatí</h2>
+	<h2>Klient / zaměstnavatel zaplatí</h2>
 
 	<IncomeResultsClient results={freelancer} />
 	<IncomeResultsEmployer results={employee} />
