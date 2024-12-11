@@ -35,7 +35,6 @@
 				name="incomeMonthly"
 				class="grow"
 				placeholder="Jaký chci čistý příjem"
-				min="16442"
 				bind:this={incomeInput}
 				bind:value={monthlyNetIncome}
 			/>
