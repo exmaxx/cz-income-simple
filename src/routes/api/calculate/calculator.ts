@@ -20,9 +20,9 @@ function calculateFreelancerOverview(yearlyNetIncome: number) {
 		freelancerRates
 	)
 
-	const { netIncome, reachedThresholds, ...contributions } = freelancerNetAndContributions
+	const { netIncome: net, ...contributions } = freelancerNetAndContributions
 
-	return { gross, net: netIncome, reachedThresholds, contributions }
+	return { gross, net, contributions }
 }
 
 function calculateEmployeeOverview(yearlyNetIncome: number) {
@@ -30,9 +30,9 @@ function calculateEmployeeOverview(yearlyNetIncome: number) {
 
 	const employeeNetAndContributions = calculateEmployeeNetSalary(gross, employeeRates)
 
-	const { netSalary: net, reachedThresholds, ...contributions } = employeeNetAndContributions
+	const { netSalary: net, ...contributions } = employeeNetAndContributions
 
-	return { gross, net, reachedThresholds, contributions }
+	return { gross, net, contributions }
 }
 
 export function calcOverview(yearlyNetIncome: number): CalculationCombinedResults {

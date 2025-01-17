@@ -4,8 +4,9 @@
 
 	const { results }: { results: CalculationResultsEmployee } = $props()
 
-	const employerCost =
+	const employerCost = $derived(
 		results.gross + results.contributions.social.employer + results.contributions.health.employer
+	)
 
 	const employerCostFormatted = $derived(formatCurrency(employerCost / 12))
 </script>
