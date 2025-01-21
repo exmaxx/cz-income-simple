@@ -1,4 +1,4 @@
-import appStore from '$lib/store.svelte.js'
+import appStore from '$lib/store/store.svelte.js'
 
 export async function fetchIncomeOverview(monthlyNetIncome: number) {
 	const yearlyNetIncome = monthlyNetIncome * 12

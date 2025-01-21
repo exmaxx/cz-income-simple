@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { formatCurrency } from '$lib/formatters'
-	import { convertToDaily, convertToHourly, convertToMonthly } from '$lib/converters.svelte'
+	import { convertToDaily, convertToHourly, convertToMonthly } from '$lib/converters.js'
 
 	let {
 		yearlyAmount,

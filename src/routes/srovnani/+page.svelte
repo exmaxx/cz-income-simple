@@ -1,6 +1,6 @@
 <script lang="ts">
-	import appStore from '$lib/store.svelte'
-	import CellCurrency from './CellCurrency.svelte'
+	import appStore from '$lib/store/store.svelte.js'
+	import CellCurrency from '$lib/components/atoms/CellCurrency.svelte'
 
 	const {
 		income: { freelancer, employee },

@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { fetchIncomeOverview } from './actions.js'
+	import { fetchIncomeOverview } from '../../../routes/actions.js'
 
+	// -- State --
 	let monthlyNetIncome: number | null = $state(null)
 
+	// -- Refs --
 	let incomeInput: HTMLInputElement
 
-	async function handleSubmit(event: Event) {
+	// -- Events --
+	async function fetchIncomeData(event: Event) {
 		event.preventDefault()
 
 		if (monthlyNetIncome) {
@@ -13,7 +16,7 @@
 		}
 	}
 
-	async function handleError(event: Event) {
+	async function focusInput(event: Event) {
 		event.preventDefault()
 
 		incomeInput.focus()
@@ -24,7 +27,7 @@
 
 <form
 	method="POST"
-	onsubmit={monthlyNetIncome ? handleSubmit : handleError}
+	onsubmit={monthlyNetIncome ? fetchIncomeData : focusInput}
 	class="mx-4 flex flex-col items-center"
 >
 	<div>

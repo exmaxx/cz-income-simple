@@ -16,3 +16,8 @@ export interface CalculationResultsEmployee extends CalculationResultsBase {
 export interface CalculationResultsFreelancer extends CalculationResultsBase {
 	contributions: ContributionsFreelancer
 }
+
+export interface Result {
+	freelancer: CalculationResultsFreelancer
+	employee: CalculationResultsEmployee
+}
