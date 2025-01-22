@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte'
 	import { formatCurrency } from '$lib/formatters'
-	import { getBgClass, getTextClass } from '$lib/components/molecules/AmountStat'
 	import ToggleButton from '$lib/components/atoms/ToggleButton.svelte'
 	import Collapsible from '$lib/components/atoms/Collapsible.svelte'
+	import { getBgClass, getTextClass } from './AmountStat'
 
 	// -- Props --
 	interface Props {
@@ -15,14 +15,7 @@
 		details?: Snippet
 	}
 
-	const {
-		title,
-		amount,
-		explanation,
-		color = 'accent',
-		hasOutlineOnly,
-		details,
-	}: Props = $props()
+	const { title, amount, explanation, color = 'accent', hasOutlineOnly, details }: Props = $props()
 
 	// -- Derived --
 	const amountFormatted = $derived(formatCurrency(amount))
@@ -30,7 +23,9 @@
 	const classText = $derived(getTextClass(color, hasOutlineOnly))
 
 	// NOTE: Keeping this out of HTML because prettier gets confused by template strings in Svelte template
-	const classStats = $derived(`stats shadow w-min [&:not(:first-of-type)]:mt-4 ${classBg} ${classText}`)
+	const classStats = $derived(
+		`stats shadow w-min [&:not(:first-of-type)]:mt-4 ${classBg} ${classText}`
+	)
 	const classStatTitle = $derived(`stat-title ${classText}`)
 	const classStatDesc = $derived(`stat-desc  ${classText}`)
 

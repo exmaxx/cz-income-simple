@@ -1,4 +1,4 @@
-import appStore from '$lib/store/store.svelte.js'
+import resultsStore from '$lib/stores/results.svelte.js'
 
 export async function fetchIncomeOverview(monthlyNetIncome: number) {
 	const yearlyNetIncome = monthlyNetIncome * 12
@@ -11,5 +11,5 @@ export async function fetchIncomeOverview(monthlyNetIncome: number) {
 		body: JSON.stringify({ yearlyNetIncome }),
 	})
 
-	appStore.income = await response.json()
+	resultsStore.income = await response.json()
 }

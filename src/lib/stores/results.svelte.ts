@@ -1,17 +1,17 @@
 import type { CalculationResultsEmployee, CalculationResultsFreelancer } from '$lib/types'
 
-interface AppStore {
+interface Store {
 	income: {
 		freelancer: CalculationResultsFreelancer | null
 		employee: CalculationResultsEmployee | null
 	}
 }
 
-const appStore: AppStore = $state({
+const resultsStore: Store = $state({
 	income: {
 		freelancer: null,
 		employee: null,
 	},
 })
 
-export default appStore
+export default resultsStore
