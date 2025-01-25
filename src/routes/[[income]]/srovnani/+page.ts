@@ -1,7 +1,7 @@
 import type { PageLoad } from './$types'
-import formStore from '$lib/stores/form.svelte'
-import resultsStore from '$lib/stores/results.svelte'
 import type { PeriodKey } from '$lib/components/atoms/OverviewCell'
+import type { OverviewData } from '$lib/types'
+import CalculationApi, { type OverviewResult } from '$lib/services/calulationApi'
 
 interface OverviewLine {
 	amounts: Array<number | null>
@@ -9,22 +9,64 @@ interface OverviewLine {
 	period: PeriodKey
 }
 
-export const ssr = false
+interface PageData {
+	error?: string
+	overviewLines: {
+		grossIncomeLines: OverviewLine[]
+		netIncomeLines: OverviewLine[]
+		socialLines: OverviewLine[]
+		healthLines: OverviewLine[]
+		incomeTaxLines: OverviewLine[]
+		costLines: OverviewLine[]
+	} | null
+}
+export const load: PageLoad = async ({ params, fetch }) => {
+	const income = Number(params.income)
 
-export const load: PageLoad = () => {
-	return {
-		overviewLines: getOverviewLines(),
+	if (!income) {
+		return {
+			error: `Calculation failed: Missing income`,
+			overviewLines: null,
+		} as PageData
 	}
+
+	const overviewResult = await fetchOverview(income, fetch)
+
+	if (overviewResult.error) {
+		return {
+			error: `Calculation failed: ${overviewResult.error}`,
+			overviewLines: null,
+		} as PageData
+	}
+
+	if (!overviewResult.overview) {
+		return {
+			error: `Calculation failed: No data returned`,
+			overviewLines: null,
+		} as PageData
+	}
+
+	return {
+		overviewLines: getOverviewLines(income, overviewResult.overview),
+	} as PageData
 }
 
-function getOverviewLines() {
-	const { monthlyIncome } = formStore.form
+async function fetchOverview(
+	income: number,
+	fetch: typeof globalThis.fetch
+): Promise<OverviewResult> {
+	const calculationApi = new CalculationApi(fetch)
 
-	const yearlyAmount = (monthlyIncome ?? 0) * 12
+	return await calculationApi.fetchOverview(income)
+}
 
-	const {
-		income: { freelancer, employee },
-	} = resultsStore
+function getOverviewLines(
+	incomeMonthly: number,
+	overview: OverviewData
+): Record<string, OverviewLine[]> {
+	const yearlyAmount = (incomeMonthly ?? 0) * 12
+
+	const { freelancer, employee } = overview
 
 	const netIncomeLines: OverviewLine[] = [
 		{

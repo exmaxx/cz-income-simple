@@ -1,35 +1,28 @@
 <script lang="ts">
-	import resultsStore from '$lib/stores/results.svelte.js'
 	import type { PageProps } from './$types'
 	import OverviewLine from '$lib/components/organisms/OverviewLine.svelte'
+	import { page } from '$app/state'
 
 	// -- Props --
 	const { data }: PageProps = $props()
 
 	// -- Derived --
-	const {
-		income: { freelancer, employee },
-	} = resultsStore
-
-	const {
-		overviewLines: {
-			grossIncomeLines,
-			netIncomeLines,
-			socialLines,
-			healthLines,
-			incomeTaxLines,
-			costLines,
-		},
-	} = data
+	const income = $derived(page.params.income)
+	const overviewLines = $derived(data.overviewLines)
 </script>
 
-<button type="button" onclick={() => history.back()} class="btn btn-primary btn-sm m-4">
-	&lt; Zpět
-</button>
+<a href={`/${income}`} class="btn btn-primary btn-sm m-4">← Zpět</a>
 
 <h1>Srovnání</h1>
 
-{#if freelancer && employee}
+{#if overviewLines}
+	{@const grossIncomeLines = overviewLines.grossIncomeLines}
+	{@const netIncomeLines = overviewLines.netIncomeLines}
+	{@const socialLines = overviewLines.socialLines}
+	{@const healthLines = overviewLines.healthLines}
+	{@const incomeTaxLines = overviewLines.incomeTaxLines}
+	{@const costLines = overviewLines.costLines}
+
 	<div class="overflow-x-auto">
 		<table class="table">
 			<thead>

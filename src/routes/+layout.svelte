@@ -14,6 +14,13 @@
 <div class="gradient">
 	<div class="mx-auto min-h-screen md:max-w-2xl">
 		{@render children()}
+
+		<!--TODO: Footer. -->
+		<div class="mt-20 p-4">
+			<noscript>
+				<p class="text-end text-xs text-amber-300">JavaScript: off</p>
+			</noscript>
+		</div>
 	</div>
 </div>
 

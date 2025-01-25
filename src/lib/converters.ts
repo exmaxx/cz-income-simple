@@ -5,7 +5,7 @@ export function convertToMonthly(yearlyAmount: number): number {
 }
 
 export function convertToDaily(yearlyAmount: number): number {
-	const workingHoursPerYear = (DAYS_PER_YEAR - BANK_HOLIDAYS - VACATION_DAYS)
+	const workingHoursPerYear = DAYS_PER_YEAR - BANK_HOLIDAYS - VACATION_DAYS
 
 	return yearlyAmount / workingHoursPerYear
 }

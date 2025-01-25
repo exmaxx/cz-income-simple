@@ -19,5 +19,4 @@ export default {
 			},
 		},
 	],
-	htmlWhitespaceSensitivity: 'ignore',
 }
