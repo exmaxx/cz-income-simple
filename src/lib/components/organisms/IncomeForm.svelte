@@ -29,7 +29,7 @@
 
 		const incomeMonthly = formData.get('incomeMonthlyValue')
 
-		goto(`/${incomeMonthly}`, { replaceState: true, noScroll: true })
+		goto(`/${incomeMonthly}`, { noScroll: true, keepFocus: true })
 	}
 </script>
 
