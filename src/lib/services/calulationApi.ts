@@ -1,18 +1,15 @@
 import type { OverviewData } from '$lib/types'
 import { Api } from '$lib/services/api'
+import type { ResponseData } from '../../routes/api/overview/+server'
 
 export interface OverviewResult {
 	error?: string
 	overview: OverviewData | null
 }
 
-interface ResponseJson {
-	overview: OverviewData
-}
-
 export default class CalculationApi {
 	api: Api
-	static cache: Map<number, OverviewResult> = new Map()
+	static cache: Map<number, OverviewData> = new Map()
 
 	constructor(fetch: typeof globalThis.fetch) {
 		this.api = new Api('/api', fetch)
@@ -23,7 +20,7 @@ export default class CalculationApi {
 
 		if (cachedOverview) {
 			return {
-				overview: cachedOverview.overview,
+				overview: cachedOverview,
 			}
 		}
 
@@ -36,22 +33,23 @@ export default class CalculationApi {
 			}
 		}
 
-		const { overview }: ResponseJson = await response.json()
+		const { error, overview }: ResponseData = await response.json()
 
-		const result = {
-			overview,
+		if (!error && overview) {
+			this.addToCache(monthlyIncome, overview)
 		}
 
-		this.addToCache(monthlyIncome, result)
-
-		return result
+		return {
+			error,
+			overview,
+		}
 	}
 
-	getCached(monthlyIncome: number): OverviewResult | undefined {
+	getCached(monthlyIncome: number): OverviewData | undefined {
 		return CalculationApi.cache.get(monthlyIncome)
 	}
 
-	addToCache(monthlyIncome: number, result: OverviewResult) {
+	addToCache(monthlyIncome: number, result: OverviewData) {
 		CalculationApi.cache.set(monthlyIncome, result)
 	}
 }
