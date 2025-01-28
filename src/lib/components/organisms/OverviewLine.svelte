@@ -1,7 +1,5 @@
 <script lang="ts">
-	import {
-		type PeriodKey,
-	} from '$lib/components/atoms/OverviewCell'
+	import { type PeriodKey } from '$lib/components/atoms/OverviewCell'
 	import OverviewCell from '$lib/components/atoms/OverviewCell.svelte'
 
 	// -- Props --

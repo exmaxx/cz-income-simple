@@ -4,20 +4,20 @@ type ContributionsEmployee = Omit<NetSalaryResults, 'netSalary'>
 
 type ContributionsFreelancer = Omit<NetIncomeResults, 'netIncome'>
 
-interface CalculationResultsBase {
+interface OverviewBase {
 	gross: number
 	net: number
 }
 
-export interface CalculationResultsEmployee extends CalculationResultsBase {
+export interface OverviewEmployee extends OverviewBase {
 	contributions: ContributionsEmployee
 }
 
-export interface CalculationResultsFreelancer extends CalculationResultsBase {
+export interface OverviewFreelancer extends OverviewBase {
 	contributions: ContributionsFreelancer
 }
 
-export interface Result {
-	freelancer: CalculationResultsFreelancer
-	employee: CalculationResultsEmployee
+export interface OverviewData {
+	freelancer: OverviewFreelancer
+	employee: OverviewEmployee
 }

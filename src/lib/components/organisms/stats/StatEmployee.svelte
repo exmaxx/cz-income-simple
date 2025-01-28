@@ -12,9 +12,4 @@
 	const monthlySalary = $derived(amount / 12)
 </script>
 
-<AmountStat
-	title="Zaměstnanec"
-	amount={monthlySalary}
-	explanation="měsíčně"
-	color="accent"
-/>
+<AmountStat title="Zaměstnanec" amount={monthlySalary} explanation="měsíčně" color="accent" />

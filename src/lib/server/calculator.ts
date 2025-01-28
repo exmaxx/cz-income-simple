@@ -5,7 +5,7 @@ import {
 	calculateFreelancerNetIncome,
 } from '@exmaxx/cz-income-lib'
 import { employeeRates, freelancerRates } from './rates'
-import type { CalculationCombinedResults } from './types'
+import type { OverviewData } from '$lib/types'
 
 function calculateFreelancerOverview(yearlyNetIncome: number) {
 	const gross = calculateFreelancerGrossIncome(
@@ -35,7 +35,7 @@ function calculateEmployeeOverview(yearlyNetIncome: number) {
 	return { gross, net, contributions }
 }
 
-export function calcOverview(yearlyNetIncome: number): CalculationCombinedResults {
+export function calcOverview(yearlyNetIncome: number): OverviewData {
 	return {
 		freelancer: calculateFreelancerOverview(yearlyNetIncome),
 		employee: calculateEmployeeOverview(yearlyNetIncome),
