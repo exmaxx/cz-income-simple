@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Results from '$lib/components/organisms/Results.svelte'
 	import IncomeForm from '$lib/components/organisms/IncomeForm.svelte'
-	import appStore from '$lib/store/store.svelte.js'
+	import resultsStore from '$lib/stores/results.svelte.js'
 </script>
 
 <div class="flex flex-col items-center">
@@ -24,8 +24,8 @@
 
 <IncomeForm />
 
-{#if appStore.income.freelancer && appStore.income.employee}
-	<Results {...appStore.income} />
+{#if resultsStore.income.freelancer && resultsStore.income.employee}
+	<Results {...resultsStore.income} />
 
 	<div class="m-4 mt-16 flex flex-col items-center text-center">
 		Detailní přehled příjmů, daní, odvodů a vzájemné porovnání OSVČ a zaměstnance najdete zde.

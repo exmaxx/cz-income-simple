@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fetchIncomeOverview } from '../../../routes/actions.js'
+	import formStore from '$lib/stores/form.svelte'
 
 	// -- State --
 	let monthlyNetIncome: number | null = $state(null)
@@ -10,6 +11,9 @@
 	// -- Events --
 	async function fetchIncomeData(event: Event) {
 		event.preventDefault()
+
+		// TODO: Should oly specific components (or just pages?) access the store for easier navigation in the code.
+		formStore.form.monthlyIncome = monthlyNetIncome
 
 		if (monthlyNetIncome) {
 			await fetchIncomeOverview(monthlyNetIncome)

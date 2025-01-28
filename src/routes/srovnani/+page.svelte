@@ -1,10 +1,26 @@
 <script lang="ts">
-	import appStore from '$lib/store/store.svelte.js'
-	import CellCurrency from '$lib/components/atoms/CellCurrency.svelte'
+	import resultsStore from '$lib/stores/results.svelte.js'
+	import type { PageProps } from './$types'
+	import OverviewLine from '$lib/components/organisms/OverviewLine.svelte'
 
+	// -- Props --
+	const { data }: PageProps = $props()
+
+	// -- Derived --
 	const {
 		income: { freelancer, employee },
-	} = appStore
+	} = resultsStore
+
+	const {
+		overviewLines: {
+			grossIncomeLines,
+			netIncomeLines,
+			socialLines,
+			healthLines,
+			incomeTaxLines,
+			costLines,
+		},
+	} = data
 </script>
 
 <button type="button" onclick={() => history.back()} class="btn btn-primary btn-sm m-4">
@@ -25,136 +41,50 @@
 			</thead>
 
 			<tbody>
-				<tr class="hover">
-					<th>Čistý příjem</th>
-					<CellCurrency yearlyAmount={freelancer.net} period="hour" />
-					<CellCurrency yearlyAmount={employee.net} period="hour" />
-				</tr>
+				{#each netIncomeLines as line}
+					<OverviewLine heading={line.heading} amounts={line.amounts} period={line.period} />
+				{/each}
 
-				<tr class="hover">
-					<th></th>
-					<CellCurrency yearlyAmount={freelancer.net} period="day" />
-					<CellCurrency yearlyAmount={employee.net} period="day" />
-				</tr>
-
-				<tr class="hover">
-					<th></th>
-					<CellCurrency yearlyAmount={freelancer.net} period="month" />
-					<CellCurrency yearlyAmount={employee.net} period="month" />
-				</tr>
-
-				<tr class="hover">
-					<th></th>
-					<CellCurrency yearlyAmount={freelancer.net} period="year" />
-					<CellCurrency yearlyAmount={employee.net} period="year" />
-				</tr>
-
-				<tr class="hover">
-					<th>Hrubý příjem</th>
-					<CellCurrency yearlyAmount={freelancer.gross} period="hour" />
-					<CellCurrency yearlyAmount={employee.gross} period="hour" />
-				</tr>
-
-				<tr class="hover">
-					<th></th>
-					<CellCurrency yearlyAmount={freelancer.gross} period="day" />
-					<CellCurrency yearlyAmount={employee.gross} period="day" />
-				</tr>
-
-				<tr class="hover">
-					<th></th>
-					<CellCurrency yearlyAmount={freelancer.gross} period="month" />
-					<CellCurrency yearlyAmount={employee.gross} period="month" />
-				</tr>
-
-				<tr class="hover">
-					<th></th>
-					<CellCurrency yearlyAmount={freelancer.gross} period="year" />
-					<CellCurrency yearlyAmount={employee.gross} period="year" />
-				</tr>
+				{#each grossIncomeLines as line}
+					<OverviewLine heading={line.heading} amounts={line.amounts} period={line.period} />
+				{/each}
 
 				<tr>
 					<th colspan="3" class="text-accent">Daně</th>
 				</tr>
 
-				<tr class="hover">
-					<th>Daň z příjmu</th>
-					<CellCurrency yearlyAmount={freelancer.contributions.incomeTax} period="month" />
-					<CellCurrency yearlyAmount={employee.contributions.incomeTax} period="month" />
-				</tr>
+				{#each incomeTaxLines as line}
+					<OverviewLine heading={line.heading} amounts={line.amounts} period={line.period} />
+				{/each}
 
 				<tr>
-					<th colspan="3" class="text-accent">Socialní pojištění</th>
+					<th colspan="3" class="text-accent">Sociální pojištění</th>
 				</tr>
 
-				<tr class="hover">
-					<th>Já</th>
-					<CellCurrency yearlyAmount={freelancer.contributions.social} period="month" />
-					<CellCurrency yearlyAmount={employee.contributions.social.employee} period="month" />
-				</tr>
-
-				<tr class="hover">
-					<th>Zaměstnavatel</th>
-					<td>-</td>
-					<CellCurrency yearlyAmount={employee.contributions.social.employer} period="month" />
-				</tr>
-
-				<tr class="hover">
-					<th>Dohromady</th>
-					<CellCurrency yearlyAmount={freelancer.contributions.social} period="month" />
-					<CellCurrency
-						yearlyAmount={employee.contributions.social.employee +
-							employee.contributions.social.employer}
-						period="month"
-					/>
-				</tr>
+				{#each socialLines as line}
+					<OverviewLine heading={line.heading} amounts={line.amounts} period={line.period} />
+				{/each}
 
 				<tr>
 					<th colspan="3" class="text-accent">Zdravotní pojištění</th>
 				</tr>
 
-				<tr class="hover">
-					<th>Já</th>
-					<CellCurrency yearlyAmount={freelancer.contributions.health} period="month" />
-					<CellCurrency yearlyAmount={employee.contributions.health.employee} period="month" />
-				</tr>
-
-				<tr class="hover">
-					<th>Zaměstnavatel</th>
-					<td>-</td>
-					<CellCurrency yearlyAmount={employee.contributions.health.employer} period="month" />
-				</tr>
-
-				<tr class="hover">
-					<th>Dohromady</th>
-					<CellCurrency yearlyAmount={freelancer.contributions.health} period="month" />
-					<CellCurrency
-						yearlyAmount={employee.contributions.health.employee +
-							employee.contributions.health.employer}
-						period="month"
-					/>
-				</tr>
+				{#each healthLines as line}
+					<OverviewLine heading={line.heading} amounts={line.amounts} period={line.period} />
+				{/each}
 
 				<tr>
 					<th colspan="3" class="text-accent">Celkové náklady pro klienta / zaměstnavatele</th>
 				</tr>
 
-				<tr class="hover">
-					<th>Náklady</th>
-					<CellCurrency yearlyAmount={freelancer.gross} period="month" />
-					<CellCurrency
-						yearlyAmount={employee.gross +
-							employee.contributions.social.employer +
-							employee.contributions.health.employer}
-						period="month"
-					/>
-				</tr>
+				{#each costLines as line}
+					<OverviewLine heading={line.heading} amounts={line.amounts} period={line.period} />
+				{/each}
 			</tbody>
 		</table>
 	</div>
 {:else}
 	<p>
-		Žádná data. Prosím běžte na <a href="/" class="btn-link">hlavní stránku</a>
-		.
+		Žádná data. Prosím běžte na <a href="/" class="btn-link">hlavní stránku</a>.
 	</p>
 {/if}
