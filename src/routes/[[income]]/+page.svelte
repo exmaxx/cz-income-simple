@@ -4,7 +4,6 @@
 	import Results from '$lib/components/organisms/Results.svelte'
 	import IncomeForm from '$lib/components/organisms/IncomeForm.svelte'
 	import type { OverviewData } from '$lib/types'
-	import overviewStore from '$lib/stores/overview.svelte.js'
 
 	// -- Props --
 	const { data }: PageProps = $props()
@@ -13,11 +12,6 @@
 	const income = $derived(page.params.income)
 	const overview: OverviewData | null = $derived(data.overview ?? null)
 	const error: string | null = $derived(data.error ?? null)
-
-	$effect(() => {
-		// TODO: Use this also in the other page.
-		overviewStore.overview = overview
-	})
 </script>
 
 <div class="flex flex-col items-center">
