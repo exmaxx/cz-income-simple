@@ -1,7 +1,7 @@
 {
 	"name": "cz-income-simple",
 	"description": "A simple calculator for gross and net income in Czech Republic, and a comparison between a freelancer and an employee.",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",

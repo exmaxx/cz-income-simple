@@ -1,38 +1,65 @@
-# sv
+# Income Calculator & Comparator
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Income calculator & comparator for the Czech Republic.
 
-## Creating a project
+So far works for:
 
-If you're seeing this, you've probably already done this step. Congrats!
+- freelancer
+- employee
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Stack
 
-# create a new project in my-app
-npx sv create my-app
+- Sveltekit
+- TypeScript
+- Tailwind CSS
+
+Works also with JavaScript disabled in the browser.
+
+## Install
+
+### Authenticate with GitHub
+
+The `@exmaxx/cz-income-lib` is published on GitHub NPM and
+**needs Github authentication**, even though it is public.
+
+The problem is documented [here](https://github.com/orgs/community/discussions/25979)
+and [here](https://github.com/orgs/community/discussions/33875).
+
+#### Get PAT token
+
+1. Generate a personal access token (PAT) from [here](https://github.com/settings/tokens).
+With `read:packages` scope.
+2. Place token to `.npmrc` file. Replace `<YOUR_TOKEN>` with your token:
+
+```
+//npm.pkg.github.com/:_authToken=<YOUR_TOKEN>
 ```
 
-## Developing
+Or place the whole line to your global `~/.npmrc`.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+### Install packages
 
 ```bash
-npm run build
+# Run after you placed your PAT token to `.npmrc`
+yarn
 ```
 
-You can preview the production build with `npm run preview`.
+## Run
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### Run dev server
+
+```bash
+# Run in dev mode
+yarn dev
+```
+
+### Build and preview
+
+```bash
+# Build and preview in production mode
+yarn build && yarn preview
+```
+
+## Licence
+
+No licence. The code is not free to use at the moment.
